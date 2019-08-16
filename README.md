@@ -12,13 +12,13 @@ On Linux or MacOS, we can use the cron daemon to achieve automation. On Windows,
 
 In this README, I will cover:
 
-- [Cron daemon and crontab](#cron-daemon) - explain how I use the cron daemon and crontab to run my twitter bots each morning
-- [Creating a cron job](#cron-job) - explain how to create a cron job, and what you need to understand about cron and how it works
-- [The twitter bots script](#twitter-bot-script) - provide information about the twitter_bots.sh script included here to run the bots
-- [Cron and environment variables](#cron-env) - explain how to access environment variables from a script run from cron
-- [Running your cron job](#cron-run) - explain how to run your cron job and where to check for results
+- [Cron daemon and crontab](#the-cron-daemon-and-crontab) - explain how I use the cron daemon and crontab to run my twitter bots each morning
+- [Creating a cron job](#creating-a-cron-job) - explain how to create a cron job, and what you need to understand about cron and how it works
+- [The twitter bots script](#the-twitter-bots-script) - provide information about the twitter_bots.sh script included here to run the bots
+- [Cron and environment variables](#cron-and-environment-variables) - explain how to access environment variables from a script run from cron
+- [Running your cron job](#running-your-cron-job) - explain how to run your cron job and where to check for results
 
-## [The cron daemon and crontab](#cron-daemon)
+## The cron daemon and crontab
 
 The cron daemon runs for each user on the system, and is started by the system startup scripts. It looks for tasks defined for each user using the crontab command.
 
@@ -31,7 +31,7 @@ The `-e` says to use the default system editor with crontab. For most Linux syst
 
 If you want to see what jobs are in crontab, you can run the command `crontab -l`. To remove a cron job, you can run the editor (`crontab -e`), and delete that line. If you want to remove all cron jobs for a user, you can run `crontab -r` as that user
 
-## [Creating a cron job](#cron-job)
+## Creating a cron job
 
 When you run `crontab -e`, the editor is opened and you can add lines to schedule jobs. You indicate when the job will run, and what script (or executable) will be run.
 
@@ -54,7 +54,7 @@ An asterisk (\*) in any of these fields indicates that it is true for all values
 
 For more information about the fields in crontab and formats for values, [read the documentation here](https://help.ubuntu.com/community/CronHowto#Crontab_Lines).
 
-## [The twitter bots script](#twitter-bot-script)
+## The twitter bots script
 
 The script included in this repo demonstrates how running the bots can be automated.
 
@@ -155,13 +155,13 @@ This will deactivate the virtual environment for the bot.
 
 You can include lines like this for each bot you want to execute automatically with your script and the cron job.
 
-## [Cron and environment variables](#cron-env)
+## Cron and environment variables
 
 If you run your bot manually, any environment variable exported in your profile or rc file will be available for your bot to use (like the variables we use to access the database and Twitter). _When you run something from cron, however, the environment variables exported in your profile and rc files are not available._
 
 The \$HOME variable is available, so we can use that. Any other variable must be explicitly exported. [There are a number of ways to handle this](https://serverfault.com/questions/337631/crontab-execution-doesnt-have-the-same-environment-variables-as-executing-user), and I've chosen to export them from an env file, and source that file from my script.
 
-## [Running your cron job](#cron-run)
+## Running your cron job
 
 Remember that for cron to run, your system needs to be turned on and online when the cron job is scheduled to run. You can check your log file to see how things go. If there are problems, cron will write to _/var/log/syslog_ by default, so you can check there for errors if it doesn't appear that your cron job is running.
 

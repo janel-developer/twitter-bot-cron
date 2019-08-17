@@ -165,4 +165,4 @@ The \$HOME variable is available, so we can use that. Any other variable must be
 
 Remember that for cron to run, your system needs to be turned on and online when the cron job is scheduled to run. You can check your log file to see how things go. If there are problems, cron will write to _/var/log/syslog_ by default, so you can check there for errors if it doesn't appear that your cron job is running.
 
-Hopefully with this information, you can figure out how to automate your own bots. Reach out to me on twitter if you have questions @JanelBrandon12.
+Hopefully with this information, you can figure out how to automate your own bots. Reach out to me on twitter if you have questions [@JanelBrandon12](https://twitter.com/janelbrandon12).
